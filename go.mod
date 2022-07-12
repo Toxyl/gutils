@@ -1,3 +1,3 @@
-module github.com/Toxyl/gutils
+module github.com/toxyl/gutils
 
 go 1.18
