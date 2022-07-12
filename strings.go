@@ -2,7 +2,13 @@ package gutils
 
 import (
 	"math/rand"
+	"regexp"
 	"strings"
+)
+
+var (
+	reNonASCII     = regexp.MustCompile("[[:^ascii:]]")
+	reNonPrintable = regexp.MustCompile("[[:^print:]]")
 )
 
 func ImplodeLines(lines []string) string {
@@ -11,6 +17,14 @@ func ImplodeLines(lines []string) string {
 
 func ExplodeLines(lines string) []string {
 	return strings.Split(lines, "\n")
+}
+
+func ReplaceNonASCII(str, repl string) string {
+	return reNonASCII.ReplaceAllLiteralString(str, repl)
+}
+
+func ReplaceNonPrintable(str, repl string) string {
+	return reNonPrintable.ReplaceAllLiteralString(str, repl)
 }
 
 func ChunkString(s string, sep string, chunkSize int) [][]string {
