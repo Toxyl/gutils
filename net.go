@@ -2,6 +2,7 @@ package gutils
 
 import (
 	"context"
+	"fmt"
 	"net"
 	"net/http"
 	"strconv"
@@ -89,4 +90,8 @@ func ExtractHostFromAddr(addr net.Addr) string {
 
 func SplitHostPortFromAddr(addr net.Addr) (string, int) {
 	return SplitHostPort(addr.String())
+}
+
+func JoinHostPort(host string, port int) string {
+	return fmt.Sprintf("%s:%d", host, port)
 }

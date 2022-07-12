@@ -4,6 +4,7 @@ import (
 	"math/rand"
 	"regexp"
 	"strings"
+	"unicode"
 )
 
 var (
@@ -25,6 +26,12 @@ func ReplaceNonASCII(str, repl string) string {
 
 func ReplaceNonPrintable(str, repl string) string {
 	return reNonPrintable.ReplaceAllLiteralString(str, repl)
+}
+
+func RemoveNonPrintable(str string) string {
+	return strings.TrimFunc(str, func(r rune) bool {
+		return !unicode.IsGraphic(r)
+	})
 }
 
 func ChunkString(s string, sep string, chunkSize int) [][]string {
