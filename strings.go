@@ -65,7 +65,7 @@ func RemoveCommandFlags(parts []string) []string {
 //
 // The string consists of `n` times a space followed by a backspace.
 //
-// If `n`` is zero, the function will use a random value between 1 and 1000 (inclusive).
+// If `n` is zero, the function will use a random value between 1 and 1000 (inclusive).
 func GeneratePseudoEmptyString(n int) string {
 	if n == 0 {
 		n = GetRandomInt(1, 1000)
@@ -73,7 +73,7 @@ func GeneratePseudoEmptyString(n int) string {
 	return strings.Repeat(" \u0008", n) // space follow by backspace
 }
 
-// GenerateGarbageString produces a string (length is randomly chosen between 1 and `n``)
+// GenerateGarbageString produces a string (length is randomly chosen between 1 and `n`)
 // consisting of random (non)-printable characters.
 func GenerateGarbageString(n int) string {
 	garbage := make([]byte, GetRandomInt(1, n))
