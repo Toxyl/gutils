@@ -54,6 +54,7 @@ func GenerateSelfSignedCertificate(commonName, organization, keyFile, crtFile st
 	if err != nil {
 		return fmt.Errorf("encoding certificate failed: %s", err.Error())
 	}
+	_ = os.WriteFile(crtFile, certBuf.Bytes(), 0600)
 
 	return nil
 }
